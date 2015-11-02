@@ -16,11 +16,38 @@ Install smbus Python library:
 	$ sudo apt-get install python-smbus
 
 
-Download shutdown script from GitHub
+Download shutdown script from GitHub:
 
     $ git clone https://github.com/Cube-Controls/picubes-shutdown.git
+
+Edit Crontab:
 	
-	$ cd picubes-shutdown
+	$ sudo crontab -e 
+
+Using cursor keys scroll to the bottom and add next line:
+
+	@reboot python /home/pi/picubes-shutdown/shutdown.py &
+
+![](./docs/cron.png)
+
+To save these changes click “CTRL-X”, then “Y” and finally “Return”. You should now be back at the command prompt.
+
+Reboot Raspberry Pi using :
+
+	$ sudo reboot
+
+After Raspberry Pi starts up to test script power plug can be unplugged , after 10 seconds script will start safe shutdown procedure and Raspberry Pi will shut down.
+
+Please note that JP1 jumper on the Pi-Cubes Main board has to be in the BAC(Backup) position in order to provide power from
+backup capacitors to the Raspberry Pi.
+
+License
+----
+
+MIT 
+
+ 
+	
 
 
 
