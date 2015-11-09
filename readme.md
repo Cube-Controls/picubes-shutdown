@@ -28,6 +28,11 @@ Using cursor keys scroll to the bottom and add next line:
 
 	@reboot python /home/pi/picubes-shutdown/shutdown.py &
 
+In the case that The ThingBox Node-RED image is used and "root" user name to login:
+	
+	@reboot python /root/picubes-shutdown/shutdown.py &
+
+
 ![](./docs/cron.png)
 
 To save these changes click “CTRL-X”, then “Y” and finally “Return”. You should now be back at the command prompt.
