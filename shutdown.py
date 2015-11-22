@@ -13,7 +13,7 @@ GPIO.setup(4, GPIO.IN,pull_up_down=GPIO.PUD_UP)
 # function to shut down Pi
 def Int_shutdown(channel):  
 	# wait ten seconds
-	time.sleep(10)      
+	time.sleep(5)      
 	# shutdown Raspberry Pi if power is still down
 	if (GPIO.input(4) == False):
 		os.system("sudo shutdown -h now")
