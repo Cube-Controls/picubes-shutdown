@@ -15,10 +15,18 @@ Install smbus Python library:
 
 	$ sudo apt-get install python-smbus
 
+I system does not have Python Module RPi.GPIO then install it:
+
+	$ sudo apt-get install python-dev python-rpi.gpio
+
 
 Download shutdown script from GitHub:
 
     $ git clone https://github.com/Cube-Controls/picubes-shutdown.git
+
+There is more ways to run python script on the reboot.
+
+### Run script using Cron Scheduler
 
 Edit Crontab:
 	
@@ -40,6 +48,31 @@ To save these changes click “CTRL-X”, then “Y” and finally “Return”.
 Reboot Raspberry Pi using :
 
 	$ sudo reboot
+
+### Run script using /etc/rc.local
+
+Edit /etc/rc.local:
+	
+	$ nano /etc/rc.local 
+
+Using cursor keys scroll to the bottom and add next line before "exit 0":
+
+	python /home/pi/picubes-shutdown/shutdown.py --silent &
+
+In the case that The ThingBox Node-RED image is used and "root" user name to login:
+	
+	python /root/picubes-shutdown/shutdown.py --silent &
+
+
+![](./docs/rc.local.png)
+
+To save these changes click “CTRL-X”, then “Y” and finally “Return”. You should now be back at the command prompt.
+
+Reboot Raspberry Pi using :
+
+	$ sudo reboot
+
+----------
 
 After Raspberry Pi starts up to test script power plug can be unplugged , after 5 seconds script will start safe shutdown procedure and Raspberry Pi will shut down.
 
